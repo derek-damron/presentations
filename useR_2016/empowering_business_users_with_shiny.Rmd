@@ -1,0 +1,107 @@
+---
+title: "Empowering Business Users with Shiny"
+author: "Derek Damron"
+date: "June 29, 2016"
+output:
+    beamer_presentation:
+        includes:
+            in_header: user_2016.tex
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## What We Gon' Talk 'Bout?
+
+1. Why should we want to empower our business users?
+2. A couple of examples of how we have used Shiny within Allstate
+   to engage our business partners with analytics
+3. Some notes about using Shiny in this way
+
+## Empowering?  Huh?
+
+\begin{itemize}[<+->]
+    \item Why to we build things?
+    \begin{itemize}
+        \item<.-> To pay the bills
+        \item<.-> Because it's fun
+        \item<.-> To have an impact
+    \end{itemize}
+    \item Building positive relationships with others is necessary to 
+                    make an impact in a fast-moving world
+    \item<.-> Transparency and sharing ownership of work is often critical
+                    and can often supersede the work itself
+    \item Shiny can be used as an effective tool for building
+                    relationships between data workers and business users
+\end{itemize}
+
+## Why Shiny?
+
+- R's open source community
+- Relatively low barrier to entry (e.g. no need to learn HTML/CSS/JS)
+- Exploiting your existing code for data analysis and visualization
+
+## Example 1: Data Exploration
+
+\begin{itemize}[<+->]
+    \item Working with a technology group to proactively identify server outages
+    \begin{itemize}
+        \item<.-> E.g. based on recent changes, assigned resources, and call notes
+    \end{itemize}
+    \item This data is primarily user-supplied and hence is very messy and nuanced
+    \item<.-> Our business partners had some experience analyzing this data but weren't
+            able to dive as deep as they wanted
+    \item Shiny helped us easily collaborate with our business user 
+                    to explore and understand this data
+    \begin{itemize}
+        \item<.-> We get to leverage their persepective on the business-side of the data (How do software changes get scheduled and how is that documented?)
+        \item<.-> Our business partners get to leverage our experience working with data
+    \end{itemize}
+\end{itemize}
+
+## Example 2: Delivering Models
+
+\begin{itemize}[<+->]
+    \item Working with claims adjusters to give them fast and quantitatively based
+  estimates on expected claim amounts early on in the process
+    \begin{itemize}
+        \item<.-> E.g. for procatively reaching for quick payments when we expect a claim
+    to be extensive
+    \end{itemize}
+    \item Again, this data is primarily user-supplied and hence is very messy and nuanced
+    \item<.-> Our business partners had some experience analyzing this data but weren't
+  able to dive as deep as they wanted
+    \item Shiny helped us quickly create a prototype application to mine adjuster notes and
+  provide
+    \begin{itemize}
+        \item<.-> We get to leverage their perspective on cases (Qualitative information relevant to the claim that is hard to measure)
+        \item<.-> Our business partners get to leverage model that suggest actions and provide
+    a quantitative context for those suggestions
+    \end{itemize}
+\end{itemize}
+
+## Some Notes to Using Shiny in this Way
+
+\begin{itemize}[<+->]
+    \item Shiny is a fantastic **supplement** to great work but does not **replace** great work
+    \item<.-> As with any tool, it requires:
+    \begin{itemize}
+        \item<.-> Strategic direction
+        \begin{itemize}
+            \item<.-> E.g. what does this Shiny app really need to help us do
+        \end{itemize}
+    \end{itemize}
+    \begin{itemize}
+        \item Good communication
+        \begin{itemize}
+            \item<.-> E.g. in making assumptions and setting expectations
+        \end{itemize}
+    \end{itemize}
+    \begin{itemize}
+        \item Good data work
+        \begin{itemize}
+            \item<.-> E.g. in preparing and modeling data
+        \end{itemize}
+    \end{itemize}
+\end{itemize}
