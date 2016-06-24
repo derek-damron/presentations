@@ -79,10 +79,13 @@ knitr::opts_chunk$set(echo = FALSE)
     \end{itemize}
     \item<.-> Claims adjusters have worked extensively with this data but need help understanding
               what can help predict claim amounts early in the process
+\end{itemize}
+
+## Example 2: How Did Shiny Help?
 
 \begin{itemize}
-    \item Shiny helped us quickly create a prototype application to mine adjuster notes and
-          provide estimates of claim amount
+    \item Shiny helped us quickly create a prototype application to provide 
+          estimates of claim amount and allow adjusters to update incorrect information
     \item We get to leverage their perspective on claims cases
     \begin{itemize}
         \item E.g. qualitative information relevant to the claim that is hard to measure
