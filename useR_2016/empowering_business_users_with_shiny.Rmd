@@ -1,6 +1,9 @@
 ---
 title: "Empowering Business Users with Shiny"
-author: "Derek Damron"
+author: |
+    | Derek Damron
+    | https://derek-damron.github.io/
+    | damrondm@gmail.com
 date: "June 29, 2016"
 output:
     beamer_presentation:
@@ -12,32 +15,31 @@ output:
 knitr::opts_chunk$set(echo = FALSE)
 ```
 
-## What We Gon' Talk 'Bout?
+## Agenda
 
 1. What do we mean by "empowering" business users?
-2. A couple of examples to show how we have used Shiny within Allstate
+2. Two examples to show how we have used Shiny within Allstate
    to engage our business partners with analytics
 3. Some observations about using Shiny in this way
 
-## Empowering?  Huh?
+## How Do We Empower Business Users?
 
 \begin{itemize}[<+->]
-    \item We empower business users by helping them make more 
-          informed decisions with data
-    \item We can't really help business users if they do not
-          trust the work that we are doing
-    \item<.-> We can build relationships by being transparent
-              about the work we are doing and sharing ownership
-              of the work where possible
-    \item Shiny can be used as an effective tool for building
-          positive relationships between us and business users
+    \item Helping them make more informed decisions with data
+    \item Building relationships by:
+    \begin{itemize}
+        \item<.-> Being transparent
+        \item<.-> Sharing ownership
+    \end{itemize}
+    \item Shiny can be an effective tool for building these relationships
 \end{itemize}
 
 ## Why Shiny?
 
 - R's active open source community
-- Relatively low barrier to entry (e.g. no need to learn HTML/CSS/JS)
-- Exploiting your existing R code for data visualization and analysis
+- Low barrier to entry
+    - E.g. No need to learn HTML/CSS/JS
+- Exploiting your existing R code
 
 ## Example 1: Exploring Messy Data
 
@@ -57,24 +59,24 @@ knitr::opts_chunk$set(echo = FALSE)
 \begin{itemize}
     \item Shiny helped us more easily collaborate with our business users to explore 
           and understand this data
-    \item We get to leverage their persepective on the business-side of this data
     \begin{itemize}
-        \item E.g. How do software/hardware changes get scheduled and how is that documented?
-    \end{itemize}
-    \item Our business partners get to leverage our experience working with and asking
-          questions about data
-    \begin{itemize}
-        \item E.g. How does this data need to get transformed for building predictive models?
+        \item We get to leverage their perspective on how the data is generated
+        \item Our business partners get to leverage our experience working with and asking
+              questions about data
     \end{itemize}
 \end{itemize}
+
+## Example 1: The App!
+
+\centerline{\includegraphics[height=2.1in]{screenshot_viz.png}}
 
 ## Example 2: "Delivering" Models
 
 \begin{itemize}[<+->]
-    \item Case: Claims adjusters want to be able to make faster claims decisions
+    \item Case: Claims adjusters want to be able to make faster decisions
     \item Data: A mixture of closed- and free-form data on claims
     \begin{itemize}
-        \item<.-> E.g. Information on involved parties, assessed damages, and case notes from
+        \item<.-> E.g. Involved parties, assessed damages, and case notes from
                   the adjuster
     \end{itemize}
     \item<.-> Claims adjusters have worked extensively with this data but need help understanding
@@ -86,40 +88,25 @@ knitr::opts_chunk$set(echo = FALSE)
 \begin{itemize}
     \item Shiny helped us quickly create a prototype application to provide 
           estimates of claim amount and allow adjusters to update incorrect information
-    \item We get to leverage their perspective on claims cases
     \begin{itemize}
-        \item E.g. qualitative information relevant to the claim that is hard to measure
-    \end{itemize}
-    \item Our business partners get to leverage our experience finding predictive variables
-          and building predictive models
-    \begin{itemize}
-        \item E.g. manually tracking a new variable due to its predictive power after initially
-              mining that variable from claims notes
+        \item We get to leverage their perspective on claims cases
+        \item Our business partners get to leverage our experience building predictive models
     \end{itemize}
 \end{itemize}
 
+## Example 2: The App!
+
+\centerline{\includegraphics[height=3.3in]{screenshot_deliver.png}}
+
 ## Some Notes to Using Shiny in this Way
 
-\begin{itemize}[<+->]
+\begin{itemize}
     \item Shiny is a fantastic \textbf{supplement} to great work but does not \textbf{replace}
           great work
-    \item<.-> As with any tool, it requires:
+    \item As with any tool, it requires:
     \begin{itemize}
-        \item<.-> Strategic direction
-        \begin{itemize}
-            \item<.-> I.e. what does this Shiny app \emph{really} need to do to be useful?
-        \end{itemize}
-    \end{itemize}
-    \begin{itemize}
+        \item Strategic direction
         \item Good communication
-        \begin{itemize}
-            \item<.-> E.g. in making necessary assumptions and setting expectations
-        \end{itemize}
-    \end{itemize}
-    \begin{itemize}
         \item Good data work
-        \begin{itemize}
-            \item<.-> E.g. in preparing and modeling data
-        \end{itemize}
     \end{itemize}
 \end{itemize}
