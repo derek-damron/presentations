@@ -1,0 +1,8 @@
+.Rproj.user
+.Rhistory
+.RData
+managing_your_projects.Rproj
+knit_slides.R
+slides_dynamic_cache/*
+slides_dynamic_files/*
+diagram.html
