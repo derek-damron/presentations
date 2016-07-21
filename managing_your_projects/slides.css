@@ -146,6 +146,13 @@ body {
   margin-right: auto;
 }
 
+.reveal a {
+  color: #00ff00;
+}
+
+.reveal a:hover {
+  color: #b2ffb2;
+}
 
 /*
 
