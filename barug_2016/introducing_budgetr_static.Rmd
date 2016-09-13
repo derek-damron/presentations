@@ -1,0 +1,382 @@
+---
+title: "Introducing budgetr"
+author: Derek Damron
+#date: "`r sub(' 0', ' ', format(Sys.Date(), format='%B %d, %Y'))`"
+date: "September 13, 2016"
+output: 
+    revealjs::revealjs_presentation:
+        transition: none
+        css: slides.css
+        includes:
+            in_header: header.html
+---
+
+## What is budgetr? {.takeaway-center}
+
+<!-- Global Caching --> 
+```{r setup, include=FALSE}
+#knitr::opts_chunk$set(cache=TRUE)
+library(budgetr)
+library(ggplot2)
+library(reshape2)
+library(DiagrammeR)
+library(DT)
+```
+
+<!-- Plot theme --> 
+```{r, include=FALSE}
+gg_theme <- theme( axis.title = element_text(size = rel(2), color = "#FFFFFF")
+                 , panel.grid.major = element_blank()
+                 , panel.grid.minor = element_blank()
+                 , axis.line = element_line(color = "#FFFFFF")
+                 , panel.background = element_rect(fill = "#222222", color = "#FFFFFF")
+                 , legend.background = element_rect(fill = "#222222")
+                 , plot.background = element_rect(fill = "#222222")
+                 , legend.key = element_rect(fill = "#222222")
+                 )
+```          
+
+### &nbsp; 
+
+### An R package for easy budgeting
+
+
+
+<!-- What do you mean "easy"? -->
+
+
+
+## What do you mean "easy"?
+
+### &nbsp; 
+
+- Easy to <span style="color:yellow; margin:0;">understand</span>
+- Easy to <span style="color:yellow; margin:0;">use</span>
+
+
+
+<!-- What is a budget? (funny) -->
+
+
+
+## What is a budget?
+
+### &nbsp; 
+
+![](img/cant_afford_the_cat.png)
+
+
+
+<!-- What is a budget? (snap back to reality) -->
+
+
+
+## What is a budget?
+
+### &nbsp; 
+
+A collection of <span class="highlight">financial stuff</span>
+<br>
+over a certain period of time.
+
+
+
+<!-- Financial Stuff -->
+
+
+
+## Financial stuff
+
+```{r, echo=FALSE, cache=FALSE}
+grViz("
+digraph {
+    graph [layout = twopi]
+
+    bgcolor = '#222222'
+    fontname = 'Helvetica'
+    node [fontname='Helvetica']
+
+    subgraph items {
+        rank = same
+        node [shape='plaintext', fixedsize=TRUE, fontcolor='white', fontsize=14, height=.25]
+        item2 [label='Rent']
+        item1 [label='Paycheck']
+        item3 [label='Internet']
+        item4 [label='Car']
+        item5 [label='Groceries']
+    }
+
+    subgraph itembox {
+        rank = same
+        node [shape='oval', fixedsize=TRUE, style='filled', fillcolor='yellow', fontcolor='#222222', fontsize=14, color='#222222']
+        itembox1 [label='Item']
+    }
+
+    edge [color='white', arrowhead=vee, minlen=0.1]
+    item1, item2, item3, item4, item5 -> itembox1
+}
+")
+```
+
+
+
+<!-- Defining Items -->
+
+
+
+## Defining items {.codeblock-item}
+
+### &nbsp; 
+### &nbsp; 
+
+<pre>create_item( <span class="highlight">name = "Paycheck"</span></pre>
+<pre>           , amount = 1000</pre>
+<pre>           , day = 1</pre>
+<pre>           , recurring = TRUE</pre>
+<pre>           )</pre>
+
+
+
+<!-- Collection of Financial Stuff -->
+
+
+
+## What is a budget?
+
+### &nbsp; 
+
+<span class="highlight">A collection of financial stuff</span>
+<br>
+over a certain period of time.
+
+
+## A Collection
+
+```{r, echo=FALSE, cache=FALSE}
+grViz("
+digraph G {
+    graph [layout = dot]
+
+    nodesep = .1
+
+    bgcolor = '#222222'
+    fontname = 'Helvetica'
+    node [fontname='Helvetica']
+
+    subgraph cluster_items {
+        color = 'yellow'
+        node [shape='plaintext', fixedsize=TRUE, fontcolor='white', fontsize=14, height=.2, width=1]
+        edge [style = invis]
+
+        item1 [label='Paycheck']
+        item2 [label='Rent']
+        item3 [label='Internet']
+        item4 [label='Car']
+        item5 [label='Groceries']
+
+        item1 -> item2 -> item3 -> item4 -> item5
+    }
+
+    subgraph cluster_schedule {
+        color = invis
+
+        node [shape='plaintext', fixedsize=TRUE, fontcolor='yellow', fontsize=24, height=.25, width=1.5]
+        edge [style = invis]
+
+        schedule [label='Schedule']
+    }
+
+    item2 -> schedule [color = invis]
+}
+")
+```
+
+
+
+<!-- Defining Schedules -->
+
+
+
+## Defining schedules {.codeblock-schedule}
+
+### &nbsp;
+### &nbsp; 
+
+<pre>create_schedule( <span class="highlight">paycheck</span></pre>
+<pre>               , rent</pre>
+<pre>               , internet</pre>
+<pre>               , car</pre>
+<pre>               , groceries</pre>
+<pre>               )</pre>
+
+
+
+<!-- Certain Period of Time -->
+
+
+
+## What is a budget?
+
+### &nbsp; 
+
+<span class="highlight">A collection of financial stuff
+<br>
+over a certain period of time.</span>
+
+## Over time
+
+```{r, echo=FALSE, cache=FALSE}
+grViz("
+digraph G {
+    graph [layout = dot]
+
+    nodesep = .1
+
+    bgcolor = '#222222'
+    fontname = 'Helvetica'
+    node [fontname='Helvetica']
+
+    subgraph cluster_month1 {
+        color = invis
+        node [shape='plaintext', fixedsize=TRUE, fontcolor='white', fontsize=14, height=.2, width=1]
+        edge [color='white']
+
+        item1 [label='Paycheck']
+        item2 [label='Rent']
+        item3 [label='Internet']
+        item4 [label='Car']
+        item5 [label='Groceries']
+
+        item1 -> item2
+        item2 -> item3
+        item3 -> item4
+        item4 -> item5
+    }
+
+    edge [color=yellow]
+    item5 -> item1 [constraint=false]
+}
+")
+```
+
+
+
+<!-- Defining Budgets -->
+
+
+
+## Defining budgets {.codeblock-budget}
+
+### &nbsp;
+### &nbsp; 
+
+<pre>create_budget( <span class="highlight">schedule</span></pre>
+<pre>             , start = as.Date("2016-09-13")</pre>
+<pre>             , end = as.Date("2016-12-13")</pre>
+<pre>             , initial = 1000</pre>
+<pre>             )</pre>
+
+
+
+<!-- Visualizing -->
+
+
+
+## Visualizing
+
+```{r, echo=FALSE}
+# Create a paycheck item
+paycheck <- create_item( name = "Paycheck"
+                       , amount = 1000
+                       , day = 1
+                       , recurring = TRUE
+                       )
+# Create a rent item
+rent <- create_item( name = "Rent"
+                   , amount = -500
+                   , day = 5
+                   , recurring = TRUE
+                   )
+# Create an internet item
+internet <- create_item( name = "Internet"
+                       , amount = -100
+                       , day = 15
+                       , recurring = TRUE
+                       )
+car <- create_item( name = "Car"
+                  , amount = -100
+                  , day = "last"
+                  , recurring = TRUE
+                  )
+groceries <- create_item( name = "Groceries"
+                  , amount = -100
+                  , day = "last"
+                  , recurring = TRUE
+                  )
+my_schedule <- create_schedule(get_items())
+my_budget <- create_budget( my_schedule
+                          , start = as.Date("2016-09-13")
+                          , end = as.Date("2016-12-13")
+                          , initial=1000
+                          )
+DT::datatable( my_budget$df
+             , options = list(pageLength = 8)
+             )
+```
+
+## Visualizing
+
+```{r, echo=FALSE}
+plot(my_budget)
+```
+
+
+
+<!-- Quick Start Hints -->
+
+
+
+## Quick start hints
+
+### &nbsp;
+
+- `get_items()` for grabbing all of your items in the current environment
+- `update_*` functions to quickly update your items,<br> schedules, and budgets
+
+
+
+<!-- Future Work -->
+
+
+
+## Future work
+
+### &nbsp;
+
+- Better visualizations (e.g. interactive graphs)
+- More extendible items (e.g. "weekly" items)
+- Any ideas you have &#9786;
+
+
+
+<!-- Finding Out More -->
+
+
+
+## Finding out more
+
+### &nbsp;
+
+- Function documentation for specifics
+- Find on GitHub at<br>https://github.com/derek-damron/budgetr
+- <a href="https://derek-damron.github.io/budgetr/" target="_blank">Introductory vignette</a> for some<br>detailed examples
+
+
+
+<!-- Questions? -->
+
+
+
+## Questions?
+
+![](img/question.jpg)

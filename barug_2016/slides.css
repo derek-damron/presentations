@@ -120,9 +120,31 @@ body {
   color: yellow;
 }
 
-.reveal .codeblock pre {
+.reveal .codeblock-item pre {
   text-align: left;
-  width: 80%;
+  width: 70%;
+  text-transform: none;
+  font-family: monospace;
+  white-space: pre;
+  box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.3);
+  margin: 0 auto;
+  font-size: 1.1em;
+}
+
+.reveal .codeblock-schedule pre {
+  text-align: left;
+  width: 65%;
+  text-transform: none;
+  font-family: monospace;
+  white-space: pre;
+  box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.3);
+  margin: 0 auto;
+  font-size: 1.1em;
+}
+
+.reveal .codeblock-budget pre {
+  text-align: left;
+  width: 100%;
   text-transform: none;
   font-family: monospace;
   white-space: pre;
@@ -133,6 +155,20 @@ body {
 
 .reveal .highlight {
   color: yellow;
+}
+
+.reveal .dataTables_wrapper {
+  font-size: 100%;
+  color: white;
+}
+
+.dataTables_wrapper .dataTables_length, .dataTables_wrapper .dataTables_filter, .dataTables_wrapper .dataTables_info, .dataTables_wrapper .dataTables_processing, .dataTables_wrapper .dataTables_paginate {
+  font-size: 30%;
+  color: yellow;
+}
+
+.reveal .dataTable tbody td {
+  color: #222222;
 }
 
 /*********************************************
